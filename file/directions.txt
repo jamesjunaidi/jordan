@@ -1,0 +1,7 @@
+Read in the file into a vector.
+Then, allow for continous user input and let the user input a word.
+Check if the word the user entered is in the text file you read into the vector.
+Use CTRL + D to get to EOF (end of file). (Your instruction, not for the program)
+At EOF, sort the vector of words in alphabetical order (hint use std::sort).
+Then enter in the words from the vector into a file called "sorted.txt".
+
