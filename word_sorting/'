@@ -1,0 +1,42 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include "sol.cc"
+
+void initialize_words(std::vector<std::string> &s) {
+  std::string st;
+  std::cin >> st;
+  while (std::cin) {
+    s.push_back(st);
+    std::cin >> st;
+  }
+}
+
+
+void solve(std::vector<std::string> words) {
+
+}
+
+void test() {
+  std::vector<std::string> v = {"james", "James", "Z", "z", "A", "B", "AA", "ABC", "abc", "bca"};
+  solution(v);
+  std::cout << "Expected Answer:" << std::endl << "A" << std::endl << "AA" << std::endl << 
+    "abc" << std::endl << "ABC" << std::endl <<  "B" << std::endl << "bca" << std::endl << "James" <<
+    std::endl << "james" << std::endl << "z" << std::endl << "Z" << std::endl;
+abc
+ABC
+B
+bca
+James
+james
+z
+Z
+
+
+}
+int main(void) {
+  std::vector<std::string> words;
+  //initialize_words(words);
+  test();
+}
+

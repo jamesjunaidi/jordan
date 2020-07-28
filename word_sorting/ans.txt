@@ -1,0 +1,11 @@
+A
+AA
+abc
+ABC
+B
+bca
+James
+james
+z
+Z
+Expected Answer
