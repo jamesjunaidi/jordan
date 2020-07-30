@@ -1,0 +1,16 @@
+The file “atomic_weights.txt” contains lines with three fields separated by tabs. The first field is the atomic weight, the second field is the symbol for the element, and the third field is the name of the element (which you can ignore for this problem).
+
+We will proceed in stages, to make life easier. You should turn in only the final program, though.
+
+Write a function to load the contents of the file into an array of classes. The fields of the classes are to contain the chemical symbol and the atomic weight.
+
+Now write a function that takes a chemical compound and breaks it into elements and numbers. The basic unit of a chemical formula is an element’s symbol followed by a number (1 or more digits); the chemical compound’s formula is a sequence of one or more units. For example, the chemical formula for ethanol, C2H5OH, is 2 carbon (C) atoms, 5 hydrogen (H) atoms, an oxygen (O) atom, and another hydrogen (H) atom; and the chemical formula for water, H2O, is 2 H hydrogen (H) atoms and an oxygen (O)
+atom.
+
+A good way to check your program is to have it print out each atom’s symbol and the number that follows it, if any.
+
+Hint: Element symbols are either 1 or 2 letters. The first letter is always capitalized; if there is a second letter, it is always lower case. So “HO” is a hydrogen atom (H) and an oxygen atom (O), and “Ho” is the symbol for holmium. Similarly, “SN” is a sulfur atom (S) and a nitrogen atom (N), and “Sn” is the symbol for tin. Similarly, if no number follows an element’s name, treat it as 1.
+
+Using the functions you wrote in the above two parts, write a program that reads in a chemical compound and prints its atomic weight. Your program is to continue reading input until the user types an end of file.
+
+See the png for examples

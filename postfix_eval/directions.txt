@@ -1,0 +1,32 @@
+My mum, who is now happily retired, used to be a nuclear physicist. During most of her career, she used one of these ancient calculators made by HP in the 1980s, which were well known for their use of Revere Polish Notation, also known as postfix notation. It used to drive me crazy because it is a real brain effort to write postfix expressions instead of the standard infix expressions we are all used to.
+
+For example, the infix expression 3 + 4 would be written 3 4 + in postfix notation. More complicated, the infix expression ((15 / (7 - (1 + 1))) * 3) - (2 + (1 + 1)) would be written 15 7 1 1 + - / 3 * 2 1 1 + + -. In the second example, we understand one of the main advantages of postfix expressions: they do not need parentheses! The order of evaluation is always explicit.
+
+Interestingly enough, it is much easier to solve postfix expressions from a programming point of view, by using a single value stack.
+
+
+
+GOAL:
+
+Write a program named postfix_eval.cc that reads postfix expressions from the standard input and evaluates them, until there is no more expressions to read.
+
+A postfix expression is a line of input composed of numbers (double) and operators (+, -, *, /).
+
+Any errors detected in the expression should be reported on the screen. Error do not stop the program, incorrect expressions are reported as invalid and are simply ignored.
+
+
+For error messages, use std::cerr. So do std::cerr >> "ERROR HERE: etc" >> std::endl.
+
+
+See the example png for example pics of input and output
+
+To test the program, run test.sh by just typing in ./test.sh to the terminal
+You will first have to compile, but just type "make" to compile every time you make changes.
+
+Don't use std::stack, use the stack I gave you. To declare a stack of doubles use:
+Stack<double> s;
+You can look at the code to see what functions are available to you
+
+
+Hints:
+check out getline, std::istringstream, try-catch blocks.
