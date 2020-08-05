@@ -1,18 +1,134 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <fstream>
+#include <sstream>
 
 using namespace std;
 
 class Compound {
+  public:
+    string symbol;
+    double weight;
+
+    Compound(string a, double b) {
+      symbol = a;
+      weight = b;
+    }
+
+    void printClass() {
+      cout << "Symbol: " << symbol << endl << "Weight: " << weight << endl;
+    }
+
+    double getWeight() {
+      return weight;
+    }
+
+    string getSymbol() {
+      return symbol;
+    }
 
 };
 
+vector<Compound> upload() {
+  vector<Compound> v;
+  ifstream myfile ("atomic_weights.txt");
+  double weight;
+  string symbol;
+  string name;
+  if (myfile.is_open()) {
+    myfile >> weight >> symbol >> name;
 
-double solve(string &s) {
+    while (!myfile.eof()) {
+      Compound *a = new Compound(symbol, weight);
+      v.push_back(*a);
+      myfile >> weight >> symbol >> name;
+    }
+
+    myfile.close();
+  }
+
+  return v;
 
 }
 
+string seperate(string a) {
+  vector<string> elements;
+  for (unsigned int i = 0; i < a.size(); i++) {
+    string current;
+    string counter;
+    if (a[i] >= 'A' && a[i] <= 'Z') {
+      if (a[i + 1] >= 'a' && a[i] <= 'z') {
+        current += a[i];
+        current += a[i + 1];
+
+        if (a[i + 2] >= '1' && a[i + 2] <= 'A') {
+          counter += a[i + 2];
+          istringstream str(counter);
+          counter.clear();
+          int count;
+          str >> count;
+          for (int x = 0; x < count; x++) {
+            elements.push_back(current);
+          }
+        }
+
+        else {
+          elements.push_back(current);
+        }
+      }
+      else {
+        current += a[i];
+
+        if (a[i + 1] >= '1' && a[i + 1] <= 'A') {
+          counter += a[i + 1];
+          istringstream str(counter);
+          counter.clear();
+          int count;
+          str >> count;
+          for (int x = 0; x < count; x++) {
+            elements.push_back(current);
+          }
+        }
+
+        else {
+          elements.push_back(current);
+        }
+      }
+    }
+  }
+
+  a.clear();
+
+  for (unsigned int i = 0; i < elements.size(); i++) {
+    a += elements[i];
+    a += " ";
+  }
+
+  return a;
+}
+
+double solve(string a, vector<Compound> v = upload()) {
+  string b = seperate(a);
+  istringstream str(b);
+  double weight = 0;
+  while (str) {
+    string buf;
+    str >> buf;
+    for (Compound &a : v) {
+      string symbol = a.getSymbol();
+      if (buf == symbol) {
+        weight += a.getWeight();
+        break;
+      }
+    }
+  }
+
+  cout << endl << "The atomic weight of " << a << " is " << weight << endl << endl;
+
+  return weight; 
+
+}
 
 void test() {
 
@@ -59,5 +175,14 @@ void test() {
 
 int main(void) {
   // uncomment this to run the test, but I still want a version w/ continous input
-   test();
+  test();
+
+  string input;
+
+  cout << "Chemical composition?" << endl;
+  while (getline(cin, input)) {
+    solve(input);
+    cout << "Chemical composition?" << endl;
+  }
+
 }
